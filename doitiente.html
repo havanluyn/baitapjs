@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nhập Số tiền <input type="number"id="a">
+    <select id="VN">
+        <option value="VN"> VN</option>
+        <option value="USD">USD</option>
+    </select>
+    <select id="USD"> To Currency
+        <option value="VN">VN</option>
+        <option value="USD">USD</option>
+    </select>
+    <button onclick="chuyendoi()">Convert</button>
+    <p><span id="result"></span></p>
+<Script>
+    function chuyendoi(){
+    let tien = Number(document.getElementById("a").value);
+    let giatri1 = document.getElementById("VN").value;
+    let giatri2 = document.getElementById("USD").value;
+    if (giatri1=="VN") { 
+    if (giatri2=="USD") { document.getElementById("result").innerHTML = "result: " +tien/23000} 
+    else
+    {document.getElementById("result").innerHTML = "result: " +tien}} 
+    else 
+    {if (giatri2=="VN"){document.getElementById("result").innerHTML = "result: " +tien*23000} 
+    else{document.getElementById("result").innerHTML = "result: " +tien}} 
+    }
+
+</Script>
+</body>
+
+</html>
