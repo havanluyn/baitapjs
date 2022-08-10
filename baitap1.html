@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Nhập điểm Lí <input type="number"id="a"> <br><br>
+    Nhập điểm Hóa <input type="number"id="b"> <br><br>
+    Nhập điểm Sinh <input type="number"id="c">
+<button onclick="check()">check</button>
+<p><span id="result"></span></p>
+Nhập nhiệt độ <input type="number"id="d">
+<button onclick="check2()">check</button>
+<p><span id="result2"></span></p>
+Nhập bán kính <input type="number"id="e">
+<button onclick="check3()">check</button>
+<p><span id="result3"></span></p>
+ <script>
+    function check(){
+    let Li = Number(document.getElementById("a").value);
+    let Hoa = Number(document.getElementById("b").value);
+    let Sinh = Number(document.getElementById("c").value);
+    document.getElementById("result").innerHTML = "Điểm trung bình: " + (Li + Hoa + Sinh)/3;
+    }
+    function check2(){
+        let Nhietdo = Number(document.getElementById("d").value);
+        document.getElementById("result2").innerHTML = "Nhiệt độ F: " +((9*Nhietdo/5)+32)
+    }
+    function check3(){
+        let bankinh = Number(document.getElementById("e").value);
+        document.getElementById("result3").innerHTML = "Diện tich hình tròn: " +(bankinh*bankinh*3.14)
+        document.getElementById("result3").innerHTML = "Chu vi hình tròn: " +(bankinh*2*3.14)
+    }
+</script>
+</body>
+</html>
