@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <td>Nhập số kWh</td>
+            <td><input type="number" id="kwh"> </td>
+        </tr>
+        <tr>
+            <td>Số tiền phải đóng</td>
+            <td><input type="text" id="money"></td>
+        </tr>
+        <tr>
+            <td colspan="2"> <button onclick="result()">result</button></td>
+        </tr>
+    </table>
+    <script>
+        function result() {
+            let b1=1678;
+            let b2=1734;
+            let b3=2014;
+            let b4=2536;
+            let b5=2834;
+            let b6=2927;
+            let kwh = Number(document.getElementById("kwh").value);
+            let tien = 0;
+            kwh > 0 && kwh <= 50 ? tien = kwh * b1 :
+                kwh <= 100 ? tien = (kwh - 50) * b2 + 50 * b1 :
+                    kwh <= 200 ? tien = (kwh - 100) * b3 + 50 * b2 + 50 * b1 :
+                        kwh <= 300 ? tien = (kwh - 200) *b4 + 50 * b2 + 50 * b1 + 100 * b3 :
+                            kwh <= 400 ? tien = (kwh - 300) * b5 + 50 * b2 + 50 * b1 + 100 * b4 + 100 * b3 :
+                                tien = (kwh - 400) * b6 + 50 * b2 + 50 * b1 + 100 * b4 + 100 * b3 + 100 * b5;
+            document.getElementById("money").value = tien;
+        }
+    </script>
+</body>  
+
+</html>

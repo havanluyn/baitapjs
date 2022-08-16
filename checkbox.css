@@ -1,0 +1,22 @@
+input[type="checkbox"]{
+    width: 80px;
+    height: 20px;
+    appearance: none;
+    background:#ccc;
+    border-radius: 20px;
+    box-shadow:inset 0 0 5px;
+}
+input:checked[type="checkbox"]{
+ background: blue;   
+}
+input[type="checkbox"]::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background:#fff;
+    border-radius:20px ;
+}
+input:checked[type="checkbox"]::before{
+    left: 40px;
+}

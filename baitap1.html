@@ -11,7 +11,7 @@
     Nhập điểm Hóa <input type="number"id="b"> <br><br>
     Nhập điểm Sinh <input type="number"id="c">
 <button onclick="check()">check</button>
-<p><span id="result"></span></p>
+<p id="result"></p>
 Nhập nhiệt độ <input type="number"id="d">
 <button onclick="check2()">check</button>
 <p><span id="result2"></span></p>
@@ -23,7 +23,7 @@ Nhập bán kính <input type="number"id="e">
     let Li = Number(document.getElementById("a").value);
     let Hoa = Number(document.getElementById("b").value);
     let Sinh = Number(document.getElementById("c").value);
-        "Điểm trung bình: " + (Li + Hoa + Sinh)/3;
+    document.getElementById("result").innerHTML = "Điểm trung bình: " + (Li + Hoa + Sinh)/3;
     }
     function check2(){
         let Nhietdo = Number(document.getElementById("d").value);
