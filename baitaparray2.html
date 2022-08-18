@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let size;
+        do {
+            size = Number(prompt("Nhập số phần tử"));
+        } while (isNaN(size) || size > 10);
+        let listnumbers = new Array(size);
+        var number;
+        listnumbers[0] = Math.floor(Math.random() * (50 - 40 + 1)) + 40;
+        for (let i = 1; i < listnumbers.length; i++) {
+            let j = 0;
+            while (j <= i) {
+                number = Math.floor(Math.random() * (50 - 40 + 1)) + 40;
+                for (j = 0; j <= i; j++) {
+                    if (number == listnumbers[j]) {
+                        break;
+                    }
+                    if (j == i) {
+                        listnumbers[i] = number;
+                    }
+                }
+            }
+
+        }
+        document.write(listnumbers);
+    </script>
+</body>
+
+</html>

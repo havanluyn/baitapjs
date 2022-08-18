@@ -8,12 +8,27 @@
     <link rel="stylesheet" href="/baitapjs/baitapjs/checkbox.css">
 </head>
 <body>
-    <input style="width:50px;" type="checkbox" name="quality"> GOOD <br>
-    <input style="width:50px;" type="checkbox" name="quality"> FAST <br>
-    <input style="width:50px;" type="checkbox" name="quality"> CHEAP <br>
-    
-    <script>
-
+    <input style="width:50px;" type="checkbox" id="rdo1"onchange="rdoChange(1)"> GOOD <br>
+    <input style="width:50px;" type="checkbox" id="rdo2"onchange="rdoChange(2)"> FAST <br>
+    <input style="width:50px;" type="checkbox" id="rdo3"onchange="rdoChange(3)"> CHEAP <br>
+     <script>
+        let rdo1 = document.getElementById("rdo1");
+        let rdo2 = document.getElementById("rdo2");
+        let rdo3 = document.getElementById("rdo3");
+        function rdoChange(flag) {
+            if (flag == 1) {
+                if(rdo2.checked && rdo3.checked)
+                    rdo3.checked=false;
+            }
+            if (flag == 3) {
+                if(rdo1.checked && rdo2.checked)
+                    rdo1.checked=false;
+            }
+            if (flag == 2) {
+                if(rdo1.checked && rdo3.checked)
+                    rdo1.checked=false;
+            }
+        }
     </script>
 </body>
 </html>

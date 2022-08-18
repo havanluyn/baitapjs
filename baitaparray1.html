@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let size;
+        do {
+            size = Number(prompt("Nhập số phần tử"));
+        } while (isNaN(size));
+        let listnumbers = new Array(size);
+        for (let i = 0; i < listnumbers.length; i++) {
+            listnumbers[i] = Math.floor(Math.random() * (30 - 20+1)) + 20;
+        }
+        let n= Number(prompt("Nhập số n cần kiểm tra"));
+        count=0;
+        for (let i = 0; i < listnumbers.length; i++) {
+            if (listnumbers[i] == n) {
+                count+=1;
+                break;
+            } }
+        if (count==0){document.write(listnumbers)
+            document.write("<br>"); 
+        document.write(`${n} không có trong dãy`)}
+        else {document.write(listnumbers); 
+            document.write("<br>"); 
+        document.write(`${n} có trong dãy`);
+        }
+       
+    </script>
+</body>
+
+</html>
