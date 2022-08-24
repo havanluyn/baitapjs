@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function array10_20(size, min, max) {
+            let arr = new Array(size)
+            for (let i = 0; i < size; i++) {
+                arr[i] = Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            return arr;
+        }
+        let array = array10_20(10, 10, 20);
+        document.write(array);
+        document.write("<br>");
+        
+        
+        // ham kiem tra so chan
+        function countEvennumber(arr) {
+            let count = 0;
+            for (i = 0; i < arr.length - 1; i++) {
+                if (array[i] % 2 == 0) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        let counteven = countEvennumber(array);
+        document.write(`mang co ${counteven} so chan`);
+        document.write("<br>");
+        
+        
+        // ham kiem tra so chinh phuong
+        function countSquarenumber(arr) {
+            let dem = 0;
+            for (i = 0; i < arr.length - 1; i++) {
+                let j = 1;
+                while (j * j <= arr[i]) {
+                    if (j * j == arr[i]) {
+                        dem++;
+                    }
+                    j++;
+                }
+            }
+            return dem;
+        }
+        let countSquare = countSquarenumber(array);
+        document.write(`mang co ${countSquare} so chinh phuong`);
+        document.write("<br>");
+        
+        
+        // ham kiem tra so nguyen to
+        function countPrimenumber(arr) {
+             let cnt = 0;
+            for (i = 0; i < arr.length; i++) {
+                let dem = 0;
+                for ( let j = 2; j < arr[i]; j++) {
+                    if (arr[i] % j == 0) {
+                        dem++;
+                    }
+                }
+                if (dem == 0) { cnt++ }
+            }
+            return cnt;
+        }
+        let countPrime = countPrimenumber(array);
+        document.write(`mang co ${countPrime} so nguyen to`);
+    </script>
+</body>
+
+</html>

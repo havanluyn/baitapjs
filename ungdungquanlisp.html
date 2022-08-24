@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="name">
+        <button onclick="add()">ADD</button>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <th>STT</th>
+                <th>Tên sản phẩm</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let products = ["iPhone 6S", "iPhone X", "iPhone 7 Plus", "iPhone 8", "iPhone 12 Pro Max"];
+        let htmls = products.map(function (pdt, index) {
+            return `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${pdt}</td>
+                        <td>
+                            <button onclick="remove(${index})">Xóa</button>
+                        </td>
+                    </tr>
+                    `
+        })
+
+        document.querySelector("table>tbody").innerHTML = htmls.join("");
+        function remove(index) {
+            let confirmm=confirm(`Bạn chắc chắn muốn xóa sản phẩm ${products[index]} khỏi danh mục`);
+            if (confirmm==true){
+            products.splice(index, 1);
+            let htmls = products.map(function (pdt, index) {
+                return `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${pdt}</td>
+                        <td>
+                            <button onclick="remove(${index})">Xóa</button>
+                        </td>
+                    </tr>
+                    `
+            })
+            document.querySelector("table>tbody").innerHTML = htmls.join("");
+        }}
+        function add() {
+            let product = document.getElementById('name').value;
+            products.push(product);
+            alert(`Bạn vừa thêm sản phẩm ${product}vào danh mục`);
+            let htmls = products.map(function (pdt, index) {
+                return `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${pdt}</td>
+                        <td>
+                            <button onclick="remove(${index})">Xóa</button>
+                        </td>
+                    </tr>
+                    `
+            })
+            document.querySelector("table>tbody").innerHTML = htmls.join("");
+            document.getElementById('name').value="";
+        }       
+    </script>
+</body>
+
+</html>
