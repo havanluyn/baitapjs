@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+
+        .container {
+            width: 600px;
+            height: auto;
+        
+        }
+
+        .btn {
+            outline: 0;
+            border: 0;
+            border: 1px solid rgb(103, 208, 116);
+            border-radius: 4px;
+            padding: 2px 5px;
+
+        }
+
+        .btn-add {
+            background-color: rgb(5, 185, 5);
+            color: aliceblue;
+        }
+
+        .btn-add:hover {
+            color: rgb(1, 77, 1);
+        }
+
+        .row-add {
+            display: flex;
+            position: absolute;
+            left :50px
+        }
+
+        .row {
+            width: 100%;
+            margin: 8px;
+        }
+
+        .table {
+            width: 40%;
+            margin: 20 10 10 20;
+            position: absolute;
+            top: 100px;
+            left:100px;
+        }
+
+        .table,
+        .table tr,
+        .table th,
+        .table td {
+            border-collapse: collapse;
+            border: 1px solid gray;
+        }    
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="row-add">
+                <input type="text" id="name">
+                <button onclick="add()" class="btn btn-add">ADD</button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let products = ["iPhone 6S", "iPhone X", "iPhone 7 Plus", "iPhone 8", "iPhone 12 Pro Max"];
+        function inraTbody() {
+            let htmls = [];
+            for (let i = 0; i < products.length; i++) {
+                htmls.push(`<tr >
+                    <td>${i + 1}</td>
+                    <td id='td_${i}'>${products[i]}</td>
+                    <td>
+                        <button onclick='remove(${i})'>Xóa</button>
+                        <button onclick='edit(${i})'>Edit</button>
+                        <button onclick='save(${i})'>Save</button>
+                    </td>
+                </tr> `)
+
+            }
+            return document.querySelector('tbody').innerHTML = htmls.join("");
+        }
+        inraTbody();
+        function add() {
+            if ((document.getElementById('name').value).trim() == "" || (document.getElementById('name').value).trim() == null) {
+                alert('Ban chua nhap');
+                return;
+            }
+            products.push(document.getElementById('name').value);
+            inraTbody();
+            document.getElementById('name').value = "";
+        }
+        function remove(index) {
+            products.splice(index, 1)
+            inraTbody();
+        }
+        function edit(index) {
+            document.querySelector(`#td_${index}`).innerHTML = `<input type='text' value='${products[index]}'/>`
+        }
+        function save(index) {
+            products[index] = document.querySelector(`#td_${index}>input`).value;
+            inraTbody();
+        }
+
+    </script>
+</body>
+</html>

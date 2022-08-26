@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let Students= [{
+            Id:01,
+            Name: "Ha Van Luyn",
+            Gender:true,
+            Email: 'hvluyn@gmail.com',
+            Dob:'12/04/1998'        
+        },
+        {
+            Id:01,
+            Name: "Luyn Van Ha",
+            Gender:true,
+            Email: 'hvluyn@gmail.com',
+            Dob:'12/04/1998'        
+        }]
+        function danhsach() {
+           let htmls= Students.map(function(Student){
+            return `<tr >
+                    <td>${Student.Id}</td>
+                    <td >${Student.Name}</td>
+                    <td >${Student.Gender?"Nam":"Nu"}</td>
+                    <td >${Student.Email}</td>
+                    <td >${Student.Dob}</td>
+                </tr> ` 
+            })
+            document.querySelector('tbody').innerHTML=htmls.join("") ;  
+        }
+        danhsach();
+    </script>
+</body>
+</html>
