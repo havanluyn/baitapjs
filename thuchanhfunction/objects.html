@@ -8,6 +8,20 @@
 </head>
 <body>
     <div class="row">
+       
+            <div class="row-add">
+                ID <input type="text" id="id">
+                <br>
+                Name <input type="text" id="name">
+                <br>
+                Gender <input type="text" id="gioitinh">
+                <br>
+                Email <input type="text" id="email">
+                <br>
+                Ngay Sinh <input type="text" id="ngaysinh">
+                <br>
+                <button onclick="add()" class="btn btn-add">ADD</button>
+        </div>
         <table class="table">
             <thead>
                 <th>ID</th>
@@ -22,33 +36,59 @@
         </table>
     </div>
     <script>
-        let Students= [{
-            Id:01,
+        var Students= [{
+            Id:1,
             Name: "Ha Van Luyn",
             Gender:true,
             Email: 'hvluyn@gmail.com',
             Dob:'12/04/1998'        
         },
         {
-            Id:01,
+            Id:2,
             Name: "Luyn Van Ha",
             Gender:true,
             Email: 'hvluyn@gmail.com',
             Dob:'12/04/1998'        
         }]
         function danhsach() {
-           let htmls= Students.map(function(Student){
+           let htmls= Students.map(function(index){
             return `<tr >
-                    <td>${Student.Id}</td>
-                    <td >${Student.Name}</td>
-                    <td >${Student.Gender?"Nam":"Nu"}</td>
-                    <td >${Student.Email}</td>
-                    <td >${Student.Dob}</td>
+                    <td>${index.Id}</td>
+                    <td >${index.Name}</td>
+                    <td >${index.Gender?"Nam":"Nu"}</td>
+                    <td >${index.Email}</td>
+                    <td >${index.Dob}</td>
+                    <td>
+                        <button onclick='remove(${index.Id})'>Xóa</button>
+                        <button onclick='edit(${index})'>Edit</button>
+                        <button onclick='save(${index})'>Save</button>
+                    </td>
                 </tr> ` 
             })
-            document.querySelector('tbody').innerHTML=htmls.join("") ;  
+            document.querySelector('tbody').innerHTML=htmls.join('') ;  
         }
         danhsach();
+        function add() {
+            let id=document.querySelector('#id').value;
+            let name=document.querySelector('#name').value;
+            let gioitinh=document.querySelector('#gioitinh').value;
+            let email=document.querySelector('#email').value;
+            let ngaysinh=document.querySelector('#ngaysinh').value;
+            let studentadd={Id:id,
+                            Name: name,
+                            Gender:gioitinh,
+                            Email: email,
+                            Dob:ngaysinh}  
+            Students.push(studentadd) ;   
+            danhsach();            
+        }
+        function remove(index) {
+            let position=Students.findIndex(function (std) {
+                return std.Id == index;
+            })
+            Students.splice(position,1)
+            danhsach();    
+        }
     </script>
 </body>
 </html>

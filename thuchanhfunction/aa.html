@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="row">
+       
+            <div class="row-add">
+                ID <input type="text" id="id">
+                <br>
+                Name <input type="text" id="name">
+                <br>
+                Gender <input type="text" id="gioitinh">
+                <br>
+                Email <input type="text" id="email">
+                <br>
+                Ngay Sinh <input type="text" id="ngaysinh"> 
+                <br>
+                Anh <input type="text" id="anh">
+                <button onclick="add()" class="btn btn-add">ADD</button>
+        </div>
+       
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>Họ và tên</th>
+                <th>Giới tính</th>
+                <th>Email</th>
+                <th>Ngày sinh</th>
+                <th>Anh</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="pdt">
+
+        </div>
+    </div>
+    <script>
+        class Std{
+            constructor(Id,Name,Gender,Email,Dob,Pic){
+                this.Id=Id;
+                this.Name=Name;
+                this.Gender=Gender;
+                this.Email=Email;
+                this.Dob=Dob;
+                this.Pic=Pic;
+            }
+        }
+        var Students= [];
+        Students.push(new Std(1,"Ha Van Luyn","true","hvluyn@gmail.com","12/04/1998",))
+        function danhsach() {
+           let htmls=[];
+           for(let i=0;i<Students.length;i++){
+            htmls.push( `<tr >
+                    <td id='td1_${i}'>${Students[i].Id}</td>
+                    <td id='td2_${i}'>${Students[i].Name}</td>
+                    <td id='td3_${i}'>${Students[i].Gender?"Nam":"Nu"}</td>
+                    <td id='td4_${i}'>${Students[i].Email}</td>
+                    <td id='td5_${i}'>${Students[i].Dob}</td>
+                    <td id='td6_${i}'> <img style="width:30px"src="${Students[i].Pic}" alt=""></td>
+                    <td>
+                        <button onclick='remove(${i})'>Xóa</button>
+                        <button onclick='edit(${i})'>Edit</button>
+                        <button onclick='save(${i})'>Save</button>
+                    </td>
+                </tr> `)}
+            
+            return document.querySelector('tbody').innerHTML=htmls.join('') ;  
+        }
+        danhsach();
+        function add() {
+            let id=document.querySelector('#id').value;
+            let name=document.querySelector('#name').value;
+            let gioitinh=document.querySelector('#gioitinh').value;
+            let email=document.querySelector('#email').value;
+            let ngaysinh=document.querySelector('#ngaysinh').value;
+            let anh=document.querySelector('#anh').value;
+            let studentadd= new Std(id,name,gioitinh, email,ngaysinh,anh)  
+            Students.push(studentadd) ;   
+            danhsach();            
+        }
+        function remove(index) {
+            Students.splice(index,1)
+            danhsach();    
+        }
+        function edit(index){
+            document.querySelector(`#td1_${index}`).innerHTML = `<input type='text' value='${Students[index].Id}'/>`
+            document.querySelector(`#td2_${index}`).innerHTML = `<input type='text' value='${Students[index].Name}'/>`
+            document.querySelector(`#td3_${index}`).innerHTML = `<input type='text' value='${Students[index].Gender}'/>`
+            document.querySelector(`#td4_${index}`).innerHTML = `<input type='text' value='${Students[index].Email}'/>`
+            document.querySelector(`#td5_${index}`).innerHTML = `<input type='text' value='${Students[index].Dob}'/>`
+            document.querySelector(`#td6_${index}`).innerHTML = `<input type='text' value='${Students[index].Pic}'/>`
+        }
+        function save(index){
+            let id=document.querySelector(`#td1_${index}>input`).value;
+            let name=document.querySelector(`#td2_${index}>input`).value;
+            let gioitinh=document.querySelector(`#td3_${index}>input`).value;
+            let email=document.querySelector(`#td4_${index}>input`).value;
+            let ngaysinh=document.querySelector(`#td5_${index}>input`).value;
+            let anh=document.querySelector(`#td6_${index}>input`).value; 
+            studentadd= new Std(id,name,gioitinh, email,ngaysinh,anh);
+            Students[index]=studentadd;
+            danhsach();
+        }
+    </script>
+</body>
+</html>
